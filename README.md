@@ -336,7 +336,7 @@ $stream = $start->stream(
 )
 ```
 
-The recommended GCP instance setting is ‘B4’ however you may experiment with other classes and lookout for any memory errors.
+The recommended GCP instance class is ‘B4’ however you may experiment with other classes and lookout for any memory errors.
 
 Simply add the instance value you wish to use to ‘instance_class:’ in your ‘app.yaml ‘ file. You may wish to add a second app instance in to avoid potential bottle necks. A 3rd option would be to create a Compute Engine within your Google Cloud account.
 
