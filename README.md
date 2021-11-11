@@ -1,25 +1,25 @@
-# Jupita Node.js audio SDK
+# Jupita Twilio SDK
 
-Using the Jupita Node.js audio SDK in combination with Twilio Media Streams & any speech-to-text API, you can enable real time audio analytics. This guide will help you set up the required accounts, implement the provided Jupita Node.js audio SDK, as well as testing, maintenance & troubleshooting. Note that any speech-to-text API will work, however Google Speech-to-Text has been used for this particular guide. 
+Using the Jupita Twilio SDK & any speech-to-text API, you can enable real time audio analytics. This guide will help you set up the required accounts, implement the provided Jupita Twilio SDK, as well as testing, maintenance & troubleshooting. Note that any speech-to-text API will work, however Google Speech-to-Text has been used for this particular SDK. 
 
 To get started you will need;
 
-- [The Jupita Node.js audio SDK](https://jupita.io/backend/media-streams/node)
+- [The Jupita Twilio SDK](https://jupita.io/backend/media-streams/node)
 
-- [A free Twilio account](https://www.twilio.com/try-twilio)
+- [Your Twilio account](https://www.twilio.com/try-twilio)
 
 - [Twilio’s CLI](https://www.twilio.com/docs/twilio-cli/quickstart)
 
-- [A Google Cloud Platform account](https://cloud.google.com/)
+- [A free Google Cloud Platform account](https://cloud.google.com/)
 
 - [Ngrok](https://ngrok.com/)
 
-## Getting started with Twilio
-Twilio Media Streams provides a raw stream of any audio which can be forked via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
+## Getting started
+The Jupita Twilio SDK captures raw audio streams which can be forked via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
 
-Multiple streams can be independently transcribed and fed into Jupita via .JSON format. All of this happens in real time during the audio. Media Streams can stream audio to and from any call made either to a phone, SIP, or any Twilio Voice SDK product, however you can send any audio to Media Streams with any websocket endpoint that can accept and send base64 encoded audio.
+Multiple streams can be independently transcribed and fed into Jupita via .JSON format. All of this happens in real time during the audio. The Jupita Twilio SDK can stream audio to and from any call made either to a phone, SIP, or any Twilio Voice SDK product, however you can send any audio to the Jupita Twilio SDK with any websocket endpoint that can accept and send base64 encoded audio.
 
-The Twilio [TwiML](https://www.twilio.com/docs/glossary/what-is-twilio-markup-language-twiml) <stream> command streams audio to any WebSocket server. Your Twilio account creates and manages a virtual phone number. The new Stream command takes the audio and sends it to a configured WebSocket which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The provided Jupita Node.js audio SDK handles this entire process end-to-end.
+The Twilio [TwiML](https://www.twilio.com/docs/glossary/what-is-twilio-markup-language-twiml) <stream> command streams audio to any WebSocket server. Your Twilio account creates and manages a virtual phone number. The new Stream command takes the audio and sends it to a configured WebSocket which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The Jupita Twilio SDK handles this entire process end-to-end.
 
 ## Configuring your phone number
 You’ll need a [Twilio phone number](https://support.twilio.com/hc/en-us/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console). You’ll need to configure your phone number to respond with TwiML (Twilio Markup Language). It’s a tag-based language much like HTML, which will pass off control via a webhook based on your TwiML settings.
@@ -65,7 +65,7 @@ Create a service account for your App Engine flexible environment to utilize whe
 `Gcloud compute firewall-rules create default-allow-websockets-8080 --allow tcp:8080 --target-tags WebSocket --description "Allow WebSocket traffic on port 8080"`
 
 ## App spot
-You will also require a URL from your selected hosting platform - such as GCP’s ‘App engine’ and apply that URL into your post request in the Jupita Node.js audio SDK file ‘server.js’. This template is already setup in the Jupita Node.js audio SDK. 
+You will also require a URL from your selected hosting platform - such as GCP’s ‘App engine’ and apply that URL into your post request in the Jupita Twilio SDK file ‘server.js’. This template is already setup in the Jupita Node.js audio SDK. 
 
 ## App Engine flexible environment setup
 Take the service account JSON key you downloaded earlier, rename it to ‘google_creds.json’ and replace the same named file in the Jupita Node.js audio SDK with this file. 
@@ -100,10 +100,9 @@ Additional Google Cloud Platform links –
 
 - [References](https://cloud.google.com/speech-to-text/docs/reference/rpc/google.cloud.speech.v1/)
 
-## The Jupita Node.js audio SDK
-Deploy the Jupita Node.js audio SDK.
+## Deploying the Jupita Twilio SDK
 
-1. Download the Jupita Node.js audio SDK [here](https://jupita.io/backend/media-streams/node)
+1. Download the Jupita Twilio SDK [here](https://jupita.io/backend/media-streams/node)
 
 1. Place the folder on your local machine and open terminal
 
@@ -175,7 +174,7 @@ Note, if using a repository for your project, when cloning, make sure to include
 1. To update Gcloud SDK run ‘Gcloud components update’ in command line.
 
 
-## The Jupita Node.js audio SDK explained
+## The Jupita Twilio SDK explained
 Two tracks; outbound (touchpoint) + inbound (input)
 
 In the below code snapshot you will see that the media stream handler connection is initiated by calling
@@ -337,7 +336,7 @@ $stream = $start->stream(
 )
 ```
 
-The recommended GCP minimum instance settings for Media Streams to function is ‘B4’ however you may experiment with other classes and lookout for any memory errors.
+The recommended GCP instance setting is ‘B4’ however you may experiment with other classes and lookout for any memory errors.
 
 Simply add the instance value you wish to use to ‘instance_class:’ in your ‘app.yaml ‘ file. You may wish to add a second app instance in to avoid potential bottle necks. A 3rd option would be to create a Compute Engine within your Google Cloud account.
 
@@ -358,7 +357,7 @@ In order to do this, navigate to the line of code `// log('Touchpoint : ${this.t
 
 1. Beautify
 
-## List of NPM Packages used within the Jupita Node.js audio SDK - 
+## List of NPM Packages used within the Jupita Twilio SDK - 
 1. dotenv
 
 1. @google-cloud/speech
@@ -442,12 +441,12 @@ Custom parameters;
 
 - message_type – This is a Boolean with either value of 0 for inbound and 1 for outbound
 
-When one user calls another user it allocates the parameters as mentioned above and sends this to the Node.js application, this all happens within Media Streams while parameters are allocated in ‘server.js’ file. All of this is identified with the help of `messageType`.
+When one user calls another user it allocates the parameters as mentioned above and sends this to the Node.js application, this all happens within the Jupita Twilio SDK while parameters are allocated in ‘server.js’ file. All of this is identified with the help of `messageType`.
    
 ## Further notes
 1. The transcription-service.js file contains Google Speech-to-Text implementation and Timestamp implementation. Unless you want to change any frequency of how you receive transcripts or confidence level for speech to text, that must not be changed.
 
-1. The server.js file contains all the logic that connects with your application and Media Streams, including separating Media Streams and posting them to your backend.
+1. The server.js file contains all the logic that connects the Jupita Twilio SDK with Twilio, including separating the streams and posting them to your backend.
 
 1. TWIML file is an option and can be used as an alternate to custom parameters.
 
