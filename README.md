@@ -65,10 +65,10 @@ Create a service account for your App Engine flexible environment to utilize whe
 `Gcloud compute firewall-rules create default-allow-websockets-8080 --allow tcp:8080 --target-tags WebSocket --description "Allow WebSocket traffic on port 8080"`
 
 ## App spot
-You will also require a URL from your selected hosting platform - such as GCP’s ‘App engine’ and apply that URL into your post request in the Jupita Twilio SDK file ‘server.js’. This template is already setup in the Jupita Node.js audio SDK. 
+You will also require a URL from your selected hosting platform - such as GCP’s ‘App engine’ and apply that URL into your post request in the Jupita Twilio SDK file ‘server.js’. This template is already setup in the Jupita Twilio SDK. 
 
 ## App Engine flexible environment setup
-Take the service account JSON key you downloaded earlier, rename it to ‘google_creds.json’ and replace the same named file in the Jupita Node.js audio SDK with this file. 
+Take the service account JSON key you downloaded earlier, rename it to ‘google_creds.json’ and replace the same named file in the Jupita Twilio SDK with this file. 
 
 Your ‘app.yaml’ file will look similar to the following (you will need to configure the variables of your app engine to suit your projects requirements);
 
