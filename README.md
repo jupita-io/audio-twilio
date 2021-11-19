@@ -19,7 +19,7 @@ The Jupita Twilio SDK captures raw audio streams which can be forked via Google 
 
 Multiple streams can be independently transcribed and fed to Jupita via .JSON format. All of this happens in real time during the audio. The Jupita Twilio SDK can stream audio to and from any call made either to a phone, SIP, or any Twilio Voice SDK product, however you can send any audio to the Jupita Twilio SDK with any websocket endpoint that can accept and send base64 encoded audio.
 
-The Twilio [TwiML](https://www.twilio.com/docs/glossary/what-is-twilio-markup-language-twiml) <stream> command streams audio to any WebSocket server. Your Twilio account creates and manages a virtual phone number. The new Stream command takes the audio and sends it to a configured WebSocket which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The Jupita Twilio SDK handles this entire process end-to-end.
+The Twilio [TwiML](https://www.twilio.com/docs/glossary/what-is-twilio-markup-language-twiml) `stream` command streams audio to any WebSocket server. Your Twilio account creates and manages a virtual phone number. The new Stream command takes the audio and sends it to a configured WebSocket which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The Jupita Twilio SDK handles this entire process end-to-end.
 
 ## Configuring your phone number
 You’ll need a [Twilio phone number](https://support.twilio.com/hc/en-us/articles/223135247-How-to-Search-for-and-Buy-a-Twilio-Phone-Number-from-Console). You’ll need to configure your phone number to respond with TwiML (Twilio Markup Language). It’s a tag-based language much like HTML, which will pass off control via a webhook based on your TwiML settings.
@@ -29,7 +29,7 @@ Next, navigate to your list phone numbers and choose your new number. On the num
 ## Creating a TwiML Bin
 TwiML Bins are a serverless solution that can seamlessly host TwiML instructions. Using a TwiML Bin prevents you from needing to set up a webhook handler in your own web-hosted environment.
 
-Give your TwiML Bin a friendly Name that you can remember later. In the Body field, enter the following code, replacing the URL attribute of the <Stream> tag and the phone number contained in the body of the <Dial> tag.
+Give your TwiML Bin a friendly Name that you can remember later. In the Body field, enter the following code, replacing the URL attribute of the `Stream` tag and the phone number contained in the body of the `Dial` tag.
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -444,7 +444,7 @@ Custom parameters;
 When one user calls another user it allocates the parameters as mentioned above and sends this to the Node.js application, this all happens within the Jupita Twilio SDK while parameters are allocated in ‘server.js’ file. All of this is identified with the help of `messageType`.
    
 ## Further notes
-1. The transcription-service.js file contains Google Speech-to-Text implementation and Timestamp implementation. Unless you want to change any frequency of how you receive transcripts or confidence level for speech to text, that must not be changed.
+1. The transcription-service.js file contains Google Speech-to-Text implementation and timestamp implementation. Unless you want to change any frequency of how you receive transcripts or confidence level for speech to text, that must not be changed.
 
 1. The server.js file contains all the logic that connects the Jupita Twilio SDK with Twilio, including separating the streams and posting them to your backend.
 
