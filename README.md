@@ -41,7 +41,7 @@ Give your TwiML Bin a friendly Name that you can remember later. In the Body fie
 </Response>
 ```
 
-The <Stream> tag starts the audio stream asynchronously and then control moves onto the <Dial> verb. <Dial> will call that number. The audio stream will end when the call is completed.
+The `Stream` tag starts the audio stream asynchronously and then control moves onto the `Dial` verb. `Dial` will call that number. The audio stream will end when the call is completed.
 
 Save your TwiML Bin and make sure that you see your friendly name in the “A Call Comes In“ drop down next to TwiML Bin. Make sure to Save your phone number.
 
