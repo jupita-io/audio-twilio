@@ -17,7 +17,7 @@ To get started you will need;
 ## Getting started
 The Jupita Twilio SDK captures raw audio streams which can be forked via Google Speech-to-Text to Jupita. When the transcriptions are received Jupita will apply timestamps to create the utterances in the order in which they occurred. There is a timestamp in each payload that increments from the time the stream starts. 
 
-Multiple streams can be independently transcribed and fed to Jupita via .JSON format. All of this happens in real time during the audio. The Jupita Twilio SDK can stream audio to and from any call made either to a phone, SIP, or any Twilio Voice SDK product, however you can send any audio to the Jupita Twilio SDK with any websocket endpoint that can accept and send base64 encoded audio.
+Multiple streams can be independently transcribed and fed to Jupita via .JSON format. All of this happens in real time during the audio. The Jupita Twilio SDK can stream audio to and from any call made either to a phone, SIP, or any Twilio Voice SDK product, however you can send any audio to the Jupita Twilio SDK with any WebSocket endpoint that can accept and send base64 encoded audio.
 
 The Twilio [TwiML](https://www.twilio.com/docs/glossary/what-is-twilio-markup-language-twiml) `stream` command streams audio to any WebSocket server. Your Twilio account creates and manages a virtual phone number. The new Stream command takes the audio and sends it to a configured WebSocket which runs on a simple App Engine flexible environment. From there, the audio is sent to Google Speech-to-Text, transcribed and sent to Jupita in real-time. The Jupita Twilio SDK handles this entire process end-to-end.
 
