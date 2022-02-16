@@ -303,7 +303,7 @@ axios.post('https://api.jupita.io/v1/dump', {
 
                   "isCall": true,
 
-                  "channel_type": String("Phone"),
+                  "channel_type": "Phone",
 
                   "timestamp": log()
 
@@ -432,7 +432,7 @@ axios.post('https://api.jupita.io/v1/dump', {
 
                   "isCall": true,
 
-                  "channel_type": String("Phone"),
+                  "channel_type": "Phone",
 
                   "timestamp": log()
 
